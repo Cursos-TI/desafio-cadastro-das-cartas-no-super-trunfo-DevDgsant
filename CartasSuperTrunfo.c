@@ -43,7 +43,7 @@ void cadastrarCidade(Cidade *cidade) {
 // funcao para exibir os dados de cada cidade
 void exibirCidade(Cidade cidade) {
     // calcula a densidade populacional e o pib per capita
-    float densidadePolucional = cidade.populacao / cidade.area;
+    float densidadePopulacional = cidade.populacao / cidade.area;
     float pibPerCapita = cidade.pib / cidade.populacao;
 
     printf("Codigo: %s\n", cidade.codigo);
@@ -51,8 +51,27 @@ void exibirCidade(Cidade cidade) {
     printf("Area: %.2f km²\n", cidade.area);
     printf("PIB: %.2f milhoes\n", cidade.pib);
     printf("Pontos Turisticos: %d\n", cidade.pontosTuristicos);
-    printf("Densidade polulacional: %.2f habitantes/km²\n", densidadePolucional);
+    printf("Densidade polulacional: %.2f habitantes/km²\n", densidadePopulacional);
     printf("PIB per Capita: %.2f milhoes/habitante\n", pibPerCapita);
+}
+// funcao para calcular o super poder de um cidade 
+float calcularSuperPoder(Cidade cidade) {
+    float densidadePopulacional = cidade.populacao / cidade.area
+    float pibPerCapita = cidade.pib / cidade.populacao;
+    return cidade.populacao + cidade.area + cidade.pib + cidade.pontosTuristicos + densidadePopulacional + pibPerCapita;
+}
+// funcao para comparar 
+void compararSuperPoder(Cidade cidade1, Cidade cidade2) {
+    float superPoder1 = calcularSuperPoder(cidade1);
+    float superPoder2 = calcularSuperPoder(cidade2);
+    // exibir o vencedor ou empate se houver
+    if (superPoder1 > superPoder2) {
+            printf("A cidade %s é a vencedora!\n", cidade1.codigo);
+        } else if (superPoder1 < superPoder2) {
+            printf("A cidade %s é a vencedora!\n", cidade2.codigo);
+        } else {
+            printf("Empate entre as cidades %s e %s!\n", cidade1.codigo, cidade2.codigo);
+    }
 }
 int main() {
     int n;
@@ -72,6 +91,17 @@ int main() {
         printf("\nCidade %d:\n", i + 1);
         exibirCidade(cidades[i]);
     }
+    // comparar entre duas cidades
+    if (n > 1 ) {
+        int cidade1, cidade2;
+        printf("\n Escolha duas cidades para comparar (entre 1 e %d):\n", n);
+        scanf("%d %d", &cidade1, &cidade2);
 
-    return 0;   
+        if (cidade1 > 0 && cidade1 <= n && cidade2 > 0 && cidade2 <= n) {
+            compararSuperPoder(cidades[cidade1 - 1], cidades[cidade2 - 1]);
+        } else {
+            printf("Cidades invalidas!\n");
+        }
+    }
+    return 0;
 }
