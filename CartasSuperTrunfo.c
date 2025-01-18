@@ -12,14 +12,6 @@ void criaCodigo() {
     }
 
 }
-
-int main() {
-    // funcao principal
-    printf("Gerando os codigos das cartas...\n");
-    criaCodigo();
-    return 0;
-}
-
 // funcao para cadastras cada cidade
 typedef struct {
     char codigo[4]; // codigo da cidade
@@ -50,11 +42,17 @@ void cadastrarCidade(Cidade *cidade) {
 
 // funcao para exibir os dados de cada cidade
 void exibirCidade(Cidade cidade) {
+    // calcula a densidade populacional e o pib per capita
+    float densidadePolucional = cidade.populacao / cidade.area;
+    float pibPerCapita = cidade.pib / cidade.populacao;
+
     printf("Codigo: %s\n", cidade.codigo);
-    printf("Populacao: %d\n habitantes", cidade.populacao);
-    printf("Area: %.2f\n km²" , cidade.area);
-    printf("PIB: %.2f\n milhoes", cidade.pib);
+    printf("Populacao: %d habitantes\n", cidade.populacao);
+    printf("Area: %.2f km²\n", cidade.area);
+    printf("PIB: %.2f milhoes\n", cidade.pib);
     printf("Pontos Turisticos: %d\n", cidade.pontosTuristicos);
+    printf("Densidade polulacional: %.2f habitantes/km²\n", densidadePolucional);
+    printf("PIB per Capita: %.2f milhoes/habitante\n", pibPerCapita);
 }
 int main() {
     int n;
