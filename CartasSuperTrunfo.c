@@ -51,9 +51,9 @@ void cadastrarCidade(Cidade *cidade) {
 // funcao para exibir os dados de cada cidade
 void exibirCidade(Cidade cidade) {
     printf("Codigo: %s\n", cidade.codigo);
-    printf("Populacao: %d\n", cidade.populacao);
-    printf("Area: %.2f\n", cidade.area);
-    printf("PIB: %.2f\n", cidade.pib);
+    printf("Populacao: %d\n habitantes", cidade.populacao);
+    printf("Area: %.2f\n km²" , cidade.area);
+    printf("PIB: %.2f\n milhoes", cidade.pib);
     printf("Pontos Turisticos: %d\n", cidade.pontosTuristicos);
 }
 int main() {
