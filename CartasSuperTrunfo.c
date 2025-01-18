@@ -56,7 +56,7 @@ void exibirCidade(Cidade cidade) {
 }
 // funcao para calcular o super poder de um cidade 
 float calcularSuperPoder(Cidade cidade) {
-    float densidadePopulacional = cidade.populacao / cidade.area
+    float densidadePopulacional = cidade.populacao / cidade.area;
     float pibPerCapita = cidade.pib / cidade.populacao;
     return cidade.populacao + cidade.area + cidade.pib + cidade.pontosTuristicos + densidadePopulacional + pibPerCapita;
 }
